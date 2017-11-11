@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Project</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script type="application/javascript" src="js/script.js"></script>
+    <script type="application/javascript" src="js/awardStats.js"></script>
+    <script type="application/javascript" src="js/matchLocation.js"></script>
+    <script type="application/javascript" src="js/playerChart.js"></script>
+
+
+</head>
+
+<body>
+
+<h1>IPL Cricket Data Viz</h1>
+<p class="info">Name: Abhishek Penujuri Nataraj; E-Mail: u1080870@utah.edu; UID: u1080870</p>
+<p class="info">Name: Zeeshan Hakim; E-Mail: Your E-Mail; UID: Your UID</p>
+
+<div id="awardstats-chart" class="view">
+    <!--creating a drop down selector for awardstats-->
+    <div id="season-selector">
+        <label>Season:</label>
+        <select id="season-select" onchange="chooseSeason()">
+            <option selected value="1">Season 1</option>
+            <option value="2">Season 2</option>
+            <option value="3">Season 3</option>
+            <option value="4">Season 4</option>
+            <option value="5">Season 5</option>
+            <option value="6">Season 6</option>
+            <option value="7">Season 7</option>
+            <option value="8">Season 8</option>
+            <option value="9">Season 9</option>
+        </select>
+    </div>
+
+    <!--creating a table for awardStats-->
+    <div id="tableStats"></div>
+
+
+</div>
+
+<!--<div id="matchlocation-chart" class="view"></div>-->
+
+
+<div class="container">
+    <div id="details" class="side_panel">
+        <h3 id="season">Info Panel</h3>
+        <h3>Final?</h3>
+        <span id="final_qs"></span>
+        <h3>Winner</h3>
+        <span id="winner"></span>
+        <h3>Loser</h3>
+        <span id="loser"></span>
+    </div>
+
+    <h2>India Map</h2>
+    <div id="map" style="width: 600px; height: 300px;">
+            <script>
+                function initMap() {
+                    var uluru = {lat: 21.7679, lng: 78.8718};
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 4,
+                        center: uluru
+                    });
+                    var marker = new google.maps.Marker({
+                        position: uluru,
+                        map: map
+                    });
+                    var allowedBounds = new google.maps.LatLngBounds(
+                        new google.maps.LatLng(70.33956792419954, 178.01171875),
+                        new google.maps.LatLng(83.86483689701898, -88.033203125)
+                    );
+                    var lastValidCenter = map.getCenter();
+
+                    google.maps.event.addListener(map, 'center_changed', function() {
+                        if (allowedBounds.contains(map.getCenter())) {
+                            // still within valid bounds, so save the last valid position
+                            lastValidCenter = map.getCenter();
+                            return;
+                        }
+
+                        // not valid anymore => return to last valid position
+                        map.panTo(lastValidCenter);
+                    });
+                }
+                // bounds of the desired area
+                /*function initMap() {
+                    google.charts.load('current', {
+                        'packages': ['geochart'],
+                        // Note: you will need to get a mapsApiKey for your project.
+                        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+                        'mapsApiKey': 'AIzaSyC6luQmQTt-moXi-_xRWi04R_Heqyw8c-0'
+                    });
+
+                    google.charts.setOnLoadCallback(drawMarkersMap);
+                    function drawMarkersMap() {
+                        console.log("inside drawMarker");
+                        var data = google.visualization.arrayToDataTable([
+                            ['City', 'Population', 'Area'],
+                            ['Rome', 2761477, 1285.31],
+                            ['Milan', 1324110, 181.76],
+                            ['Naples', 959574, 117.27],
+                            ['Turin', 907563, 130.17],
+                            ['Palermo', 655875, 158.9],
+                            ['Genoa', 607906, 243.60],
+                            ['Bologna', 380181, 140.7],
+                            ['Florence', 371282, 102.41],
+                            ['Fiumicino', 67370, 213.44],
+                            ['Anzio', 52192, 43.43],
+                            ['Ciampino', 38262, 11]
+                        ]);
+                        var options = {
+                            region: 'IT',
+                            displayMode: 'markers',
+                            colorAxis: {colors: ['green', 'blue']}
+                        };
+                        var chart = new google.visualization.GeoChart(document.getElementById('map'));
+                        chart.draw(data, options);
+                    }
+                }*/
+            </script>
+
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI1m6NZxAJ8kXTFvTx_u8x__6AtY381IU&callback=initMap">
+        </script>
+    </div>
+</div>
+
+<div class="container2">
+    <div id="bar-chart" class="locationchart">
+        <h2 class="">Season: 1 - Won By Data</h2>
+
+        <svg width="500" height="400" id="barChart">
+            <g id="xAxis"></g>
+            <g id="yAxis"></g>
+            <g id="bars"></g>
+        </svg>
+
+    </div>
+    <div>
+        <h3>Visualization of Matches Held For Season 1</h3>
+        <svg class="chart" style="width: 400px; height: 300px;"></svg>
+    </div>
+</div>
+
+
+
+</body>
+</html>

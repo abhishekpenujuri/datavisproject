@@ -1,0 +1,60 @@
+
+body {
+    font-family: Lato;
+}
+#container{
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
+    margin-right: 10px;
+    float: left;
+}
+#container2{
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
+    margin-right: 10px;
+    float: left;
+}
+.side_panel {
+    float: left;
+    margin-right: 100px;
+}
+.locationchart {
+    float: left;
+    margin-right: 100px;
+}
+.chart rect {
+    fill: steelblue;
+}
+
+.chart text {
+    fill: white;
+    font: 10px sans-serif;
+    text-anchor: middle;
+}
+h1 {
+    font-family: "Arvo";
+    font-size:35px;
+    color: #464646;
+    margin: 0px;
+    padding: 0px;
+    margin-left: 20px;
+}
+.info{
+    margin-left: 20px;
+}
+
+.chart div {
+    font: 10px sans-serif;
+    background-color: steelblue;
+    text-align: right;
+    padding: 3px;
+    margin: 1px;
+    color: white;
+}
+
+.fullView{
+    display: inline-block;
+    width: 100%;
+}
