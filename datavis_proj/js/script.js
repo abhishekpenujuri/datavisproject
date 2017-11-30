@@ -2,20 +2,24 @@
 
 
 //read seasons dataset
-d3.csv("dataset/Season.csv", function (error, seasonData) {
+// d3.csv("dataset/Season.csv", function (error, seasonData) {
+d3.json("dataset/Season.json", function (error, seasonData) {
 
-    d3.csv("dataset/Player.csv", function (error, playerData){
+    d3.json("dataset/Player.json", function (error, playerData){
 
-        d3.csv("dataset/Team.csv", function (error, teamData){
+        d3.json("dataset/Team.json", function (error, teamData){
 
-            d3.csv("dataset/Player_Match.csv", function (error, playerMatchData){
+            d3.json("dataset/Player_Match.json", function (error, playerMatchData){
 
                 d3.csv("dataset/Ball_by_Ball.csv", function (error, ballData){
 
-                    d3.csv("dataset/Match.csv", function (error, matchData) {
+                    d3.json("dataset/Match.json", function (error, matchData) {
+
+                        // console.log(seasonData);
+                        // console.log(playerData);
 
                         //for view 1: AwardStats
-                        window.awardStats = new AwardStats(seasonData, playerData, teamData);
+                        window.awardStats = new AwardStats(seasonData, playerData, teamData, matchData, ballData);
 
                         //populate table for the first time
                         awardStats.update(1);
