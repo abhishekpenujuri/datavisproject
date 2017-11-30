@@ -24,8 +24,8 @@ d3.json("dataset/Season.json", function (error, seasonData) {
                         //populate table for the first time
                         awardStats.update(1);
                         //for view 2: MatchLocation
-                        let matchLocation = new MatchLocation(seasonData, playerData, teamData, playerMatchData, matchData);
-                        matchLocation.update();
+                        window.matchLocation = new MatchLocation(seasonData, playerData, teamData, playerMatchData, matchData);
+                        matchLocation.update(1);
 
                         //for view 3: PlayerChart
                         let playerChart = new PlayerChart(seasonData, playerData, teamData, playerMatchData, matchData);
@@ -45,4 +45,5 @@ d3.json("dataset/Season.json", function (error, seasonData) {
 
 function chooseSeason() {
     awardStats.chooseSeason();
+    matchLocation.chooseSeason();
 }

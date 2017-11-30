@@ -21,10 +21,10 @@ class MatchLocation {
 
 
 
-    update () {
+    update (seasonNo) {
         let season_filter_data = this.matchData.filter(function(d) {
             //            console.log(d);
-            return d.Season_Id == 7;
+            return d.Season_Id == seasonNo;
         });
 
         console.log(season_filter_data);
@@ -113,5 +113,13 @@ class MatchLocation {
             .classed("team_label", true)*/
 
     };
+
+    chooseSeason() {
+
+        // console.log(d3.select('#season-select').node().value);
+        //call update function using season number
+        this.update(d3.select('#season-select').node().value)
+
+    }
 
 };
