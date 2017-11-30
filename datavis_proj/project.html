@@ -10,8 +10,7 @@
     <script type="application/javascript" src="js/awardStats.js"></script>
     <script type="application/javascript" src="js/matchLocation.js"></script>
     <script type="application/javascript" src="js/playerChart.js"></script>
-
-
+    <script type='application/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
 </head>
 
 <body>
@@ -58,77 +57,10 @@
     </div>
 
     <h2>India Map</h2>
-    <div id="map" style="width: 600px; height: 300px;">
-            <script>
-                function initMap() {
-                    var uluru = {lat: 21.7679, lng: 78.8718};
-                    var map = new google.maps.Map(document.getElementById('map'), {
-                        zoom: 4,
-                        center: uluru
-                    });
-                    var marker = new google.maps.Marker({
-                        position: uluru,
-                        map: map
-                    });
-                    var allowedBounds = new google.maps.LatLngBounds(
-                        new google.maps.LatLng(70.33956792419954, 178.01171875),
-                        new google.maps.LatLng(83.86483689701898, -88.033203125)
-                    );
-                    var lastValidCenter = map.getCenter();
-
-                    google.maps.event.addListener(map, 'center_changed', function() {
-                        if (allowedBounds.contains(map.getCenter())) {
-                            // still within valid bounds, so save the last valid position
-                            lastValidCenter = map.getCenter();
-                            return;
-                        }
-
-                        // not valid anymore => return to last valid position
-                        map.panTo(lastValidCenter);
-                    });
-                }
-                // bounds of the desired area
-                /*function initMap() {
-                    google.charts.load('current', {
-                        'packages': ['geochart'],
-                        // Note: you will need to get a mapsApiKey for your project.
-                        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-                        'mapsApiKey': 'AIzaSyC6luQmQTt-moXi-_xRWi04R_Heqyw8c-0'
-                    });
-
-                    google.charts.setOnLoadCallback(drawMarkersMap);
-                    function drawMarkersMap() {
-                        console.log("inside drawMarker");
-                        var data = google.visualization.arrayToDataTable([
-                            ['City', 'Population', 'Area'],
-                            ['Rome', 2761477, 1285.31],
-                            ['Milan', 1324110, 181.76],
-                            ['Naples', 959574, 117.27],
-                            ['Turin', 907563, 130.17],
-                            ['Palermo', 655875, 158.9],
-                            ['Genoa', 607906, 243.60],
-                            ['Bologna', 380181, 140.7],
-                            ['Florence', 371282, 102.41],
-                            ['Fiumicino', 67370, 213.44],
-                            ['Anzio', 52192, 43.43],
-                            ['Ciampino', 38262, 11]
-                        ]);
-                        var options = {
-                            region: 'IT',
-                            displayMode: 'markers',
-                            colorAxis: {colors: ['green', 'blue']}
-                        };
-                        var chart = new google.visualization.GeoChart(document.getElementById('map'));
-                        chart.draw(data, options);
-                    }
-                }*/
-            </script>
-
-        <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI1m6NZxAJ8kXTFvTx_u8x__6AtY381IU&callback=initMap">
-        </script>
-    </div>
+    <div id="map" style="width: 600px; height: 300px;"></div>
 </div>
+
+<div id="chart_div" style="width: 900px; height: 500px;"></div>
 
 <div class="container2">
     <div id="bar-chart" class="locationchart">

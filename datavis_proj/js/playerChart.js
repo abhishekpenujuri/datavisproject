@@ -29,7 +29,7 @@ class PlayerChart {
             return d.Season_Id == 1;
         });
 
-        console.log(season_filter_data);
+        //console.log(season_filter_data);
         let svgBounds = d3.select("#barChart").node().getBoundingClientRect(),
             xAxisWidth = 100,
             yAxisHeight = 70;
@@ -130,8 +130,8 @@ class PlayerChart {
             matches_played.push(parseInt(MatchesHeldHashMap[key]));
         }
 
-        console.log(city_names);
-        console.log(matches_played);
+       // console.log("hello:" + city_names);
+       // console.log("hello:" + matches_played);
 
         //
         // var x = d3.scaleLinear()
