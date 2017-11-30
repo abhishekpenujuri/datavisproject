@@ -74,6 +74,7 @@ class MatchLocation {
             data.addColumn('number', 'Matches Played');
             var i = 0;
             var rows = [];
+            var max_matches = Math.max(matches_played);
             for (var city in city_names) {
                 var row_entry = [];
                 //console.log(city_names[i]);
@@ -87,10 +88,11 @@ class MatchLocation {
             console.log(data);
            // console.log(data);
             var options = {
-                sizeAxis: { minValue: 0, maxValue: 100 },
+                sizeAxis: { minValue: 0, maxValue: parseInt(matches_played) *4},
                 region: 'IN',
                 displayMode: 'markers',
-                colorAxis: {colors: ['green', 'blue']}
+                colorAxis: {colors: ['#FFFAFA', '#F4C2C2', '#FF6961', '#A40000', '#800000']},
+                defaultColor: 'red'
             };
 
             var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
