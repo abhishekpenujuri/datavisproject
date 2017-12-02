@@ -11,7 +11,7 @@ d3.json("dataset/Season.json", function (error, seasonData) {
 
             d3.json("dataset/Player_Match.json", function (error, playerMatchData){
 
-                d3.csv("dataset/Ball_by_Ball.csv", function (error, ballData){
+                d3.json("dataset/Ball_by_Ball.json", function (error, ballData){
 
                     d3.json("dataset/Match.json", function (error, matchData) {
 
@@ -24,12 +24,12 @@ d3.json("dataset/Season.json", function (error, seasonData) {
                         //populate table for the first time
                         awardStats.update(1);
                         //for view 2: MatchLocation
-                        window.matchLocation = new MatchLocation(seasonData, playerData, teamData, playerMatchData, matchData);
-                        matchLocation.update(1);
+                        let matchLocation = new MatchLocation(seasonData, playerData, teamData, playerMatchData);
+                        matchLocation.update(1,"Delhi");
 
                         //for view 3: PlayerChart
                         let playerChart = new PlayerChart(seasonData, playerData, teamData, playerMatchData, matchData);
-                        playerChart.update();
+                        playerChart.update(1, "Delhi");
                     });
 
 
@@ -46,4 +46,5 @@ d3.json("dataset/Season.json", function (error, seasonData) {
 function chooseSeason() {
     awardStats.chooseSeason();
     matchLocation.chooseSeason();
+    playerChart.chooseSeason();
 }
